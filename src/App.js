@@ -1,15 +1,20 @@
 import React, {useState, useEffect} from "react";
 import { Questionaire } from './components'
+import ReactDOM from "react-dom/client";
+import LandingPage from "./components/LandingPage";
+import CountdownTimer from "./components/CountdownTimer";
 
 const API_URL = 'https://opentdb.com/api.php?amount=100';
-const quizLength = 10;
+//const quizLength = 10;
+const total = 15;
 
-
-function App() {
+function App({ quizLength } ) {
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState((0));
     const [showAnswers, setShowAnswers] = useState(false);
+    const [buttonBorder, setButtonBorder] = useState('');
+    const [timer, setTimer] = useState(0);
 
     useEffect(() => {
         fetch(API_URL)
@@ -26,6 +31,9 @@ function App() {
             });
     }, []);
 
+
+
+
     const handleAnswer = (answer) => {
         if(!showAnswers) {
             if (answer === questions[currentIndex].correct_answer) {
@@ -39,21 +47,62 @@ function App() {
         // change score if correct
     };
 
-    const handleNextQuestion = () => {
-        setShowAnswers(false);
 
+    const handleNextQuestion = () => {
+        setTimer(0);
+        setShowAnswers(false);
+        setButtonBorder('');
         setCurrentIndex(currentIndex + 1);
+        ReactDOM.render(CountdownTimer)
     }
+
+    const handleRestart = () => {
+        return(
+            ReactDOM.createRoot(
+                document.getElementById('root'))
+                .render(<LandingPage />
+                )
+        );
+    }
+
+        const countdown = () => {
+            if (timer >= total) {
+                setShowAnswers(true);
+                clearInterval(interval);
+            } else {
+                setTimer(timer + 1);
+            }
+        }
+        let interval;
+        interval=setInterval(countdown, 1000);
 
   return questions.length > 0 ? (
       <div className='container'>
           {currentIndex >= quizLength ? (
-      <h1 className={'text-3xl text-white font-bold'}>Game Over! Your score was: {score/quizLength*100}%</h1>
+              <div className={'text-center'}>
+                  <h1 className={'text-3xl text-white font-bold'}>Game Over! Your score was: {score/quizLength*100}%</h1>
+                  <button
+                  className={'hover:bg-blue-800 rounded bg-blue-400 text-white font-semi rounded w-1/2 my-10'}
+                  onClick={
+                      () => handleRestart()
+                  }
+                  >
+                      New Game
+                  </button>
+              </div>
+
       ) : (
+          <div>
               <Questionaire data={questions[currentIndex]}
                             handleNextQuestion={handleNextQuestion}
                             handleAnswer={handleAnswer}
+                            quizLength={quizLength}
+                            score={score}
+                            currentIndex={currentIndex}
+                            buttonBorder={buttonBorder}
                             showAnswers={showAnswers}/>
+              <CountdownTimer total={total} timer={timer}/>
+              </div>
           )}
       </div>
      ) : (
