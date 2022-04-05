@@ -45,11 +45,14 @@ const LandingPage = () => {
             </div>
             <div className={'text-center'}>
                 <button
-                    className={'hover:bg-blue-800 hover:shadow-xl rounded bg-blue-400 w-5/12 mx-auto text-white font-semibold'}
+                    className={'hover:bg-blue-800 hover:shadow-xl rounded bg-blue-400 w-5/12 mx-auto text-white font-semibold p-5'}
                     onClick={() => handleNewGame(value)}
                 >
                     New Game
                 </button>
+            </div>
+            <div>
+                <h6 className={'text-center pt-60 text-white font-semibold'}>Created by Shmuel Cohen</h6>
             </div>
         </div>
     )

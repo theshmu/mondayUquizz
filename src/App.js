@@ -84,7 +84,7 @@ const App = ({ quizLength } ) => {
               <div className={'text-center'}>
                   <h1 className={'text-3xl text-white font-bold'}>Game Over! Your score was: {Math.round(score/quizLength*100)}%</h1>
                   <button
-                  className={'hover:bg-blue-800 rounded bg-blue-400 text-white font-semi rounded w-1/2 my-10'}
+                  className={'hover:bg-blue-800 rounded bg-blue-400 text-white font-semibold rounded w-1/2 my-10 p-4'}
                   onClick={
                       () => handleRestart()
                   }

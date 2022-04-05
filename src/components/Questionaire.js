@@ -10,6 +10,7 @@ export class Questionaire extends Component{
             total:10,
             interval:null,
             tempIndex: props.currentIndex,
+            border: 'border-0'
         };
     }
 
@@ -57,9 +58,10 @@ export class Questionaire extends Component{
                         return (
                             <button
                                 className={
-                                    `bg-white ${textColor}  p-4 font-semibold rounded shadow hover:bg-blue-100`}
+                                    `bg-white ${textColor} p-4 font-semibold rounded shadow hover:bg-blue-100`}
                                 onClick={() => {
                                     this.props.handleAnswer(answer);
+                                    clearInterval(this.state.interval);
                                 }}
                                 dangerouslySetInnerHTML={{__html: answer}}
                             />
