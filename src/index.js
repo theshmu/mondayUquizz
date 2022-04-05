@@ -5,8 +5,7 @@ import App from './App';
 import LandingPage from "./components/LandingPage";
 import 'rsuite/styles/index.less';
 
-ReactDOM.createRoot(
+const root = ReactDOM.createRoot(
     document.getElementById('root'))
-    .render(<LandingPage />
-    );
+root.render(<LandingPage root={root}/>);
 

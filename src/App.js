@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, Component} from "react";
 import { Questionaire } from './components'
 import ReactDOM from "react-dom/client";
 import LandingPage from "./components/LandingPage";
@@ -8,12 +8,12 @@ const API_URL = 'https://opentdb.com/api.php?amount=100';
 //const quizLength = 10;
 const total = 15;
 
-function App({ quizLength } ) {
+const App = ({ quizLength } ) => {
+    console.log('beep');
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState((0));
     const [showAnswers, setShowAnswers] = useState(false);
-    const [buttonBorder, setButtonBorder] = useState('');
     const [timer, setTimer] = useState(0);
 
     useEffect(() => {
@@ -29,6 +29,7 @@ function App({ quizLength } ) {
 
                 setQuestions(questions);
             });
+
     }, []);
 
 
@@ -49,11 +50,10 @@ function App({ quizLength } ) {
 
 
     const handleNextQuestion = () => {
-        setTimer(0);
+        // setTimer(0);
         setShowAnswers(false);
-        setButtonBorder('');
         setCurrentIndex(currentIndex + 1);
-        ReactDOM.render(CountdownTimer)
+        //startCountdown();
     }
 
     const handleRestart = () => {
@@ -64,17 +64,19 @@ function App({ quizLength } ) {
                 )
         );
     }
+   // let interval;
+   // const startCountdown = () => {
+     //       interval=setInterval(countdown, 1000);
+     //   }
+    //const countdown = () => {
+      //  if (timer === total) {
+        //    setShowAnswers(true);
+          //  clearInterval(interval);
+        //} else {
+          //  setTimer(timer + 1);
+        //}
+   // }
 
-        const countdown = () => {
-            if (timer >= total) {
-                setShowAnswers(true);
-                clearInterval(interval);
-            } else {
-                setTimer(timer + 1);
-            }
-        }
-        let interval;
-        interval=setInterval(countdown, 1000);
 
   return questions.length > 0 ? (
       <div className='container'>
@@ -99,9 +101,12 @@ function App({ quizLength } ) {
                             quizLength={quizLength}
                             score={score}
                             currentIndex={currentIndex}
-                            buttonBorder={buttonBorder}
-                            showAnswers={showAnswers}/>
-              <CountdownTimer total={total} timer={timer}/>
+                            showAnswers={showAnswers}
+                            setShowAnswers={setShowAnswers}
+                            answers
+              />
+
+
               </div>
           )}
       </div>
