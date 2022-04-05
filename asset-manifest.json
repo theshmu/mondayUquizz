@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/mondayUquizz/static/css/main.e6c13ad2.css",
-    "main.js": "/mondayUquizz/static/js/main.d4adadfe.js",
+    "main.css": "/mondayUquizz/static/css/main.e6037b67.css",
+    "main.js": "/mondayUquizz/static/js/main.412abf99.js",
+    "static/media/index.less": "/mondayUquizz/static/media/index.2979fe4ba4a7f3287586.less",
     "index.html": "/mondayUquizz/index.html",
-    "main.e6c13ad2.css.map": "/mondayUquizz/static/css/main.e6c13ad2.css.map",
-    "main.d4adadfe.js.map": "/mondayUquizz/static/js/main.d4adadfe.js.map"
+    "main.e6037b67.css.map": "/mondayUquizz/static/css/main.e6037b67.css.map",
+    "main.412abf99.js.map": "/mondayUquizz/static/js/main.412abf99.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.d4adadfe.js"
+    "static/css/main.e6037b67.css",
+    "static/js/main.412abf99.js"
   ]
 }
