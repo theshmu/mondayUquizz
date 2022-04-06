@@ -2,7 +2,7 @@ import React, {useState, useEffect, Component} from "react";
 import { Questionaire } from './components'
 import ReactDOM from "react-dom/client";
 import LandingPage from "./components/LandingPage";
-import CountdownTimer from "./components/CountdownTimer";
+import Fireworks from "./components/Fireworks";
 
 const API_URL = 'https://opentdb.com/api.php?amount=100';
 const total = 15;
@@ -94,6 +94,10 @@ const App = ({ quizLength } ) => {
                   >
                       New Game
                   </button>
+                  <div className={'align-baseline pt-96'}>
+                      <Fireworks />
+                  </div>
+
               </div>
 
       ) : (
