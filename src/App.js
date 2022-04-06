@@ -3,9 +3,14 @@ import { Questionaire } from './components'
 import ReactDOM from "react-dom/client";
 import LandingPage from "./components/LandingPage";
 import Fireworks from "./components/Fireworks";
+import Correct from './resources/Correct.mp3';
+import Incorrect from './resources/Incorrect.mp3';
+
 
 const API_URL = 'https://opentdb.com/api.php?amount=100';
-const total = 15;
+
+const correct = new Audio(Correct);
+const incorrect = new Audio(Incorrect);
 
 const App = ({ quizLength } ) => {
     const [questions, setQuestions] = useState([]);
@@ -39,6 +44,9 @@ const App = ({ quizLength } ) => {
         if(!showAnswers) {
             if (answer === questions[currentIndex].correct_answer) {
                 setScore(score + 1);
+                correct.play();
+            } else {
+                incorrect.play();
             }
         }
         setShowAnswers(true);
