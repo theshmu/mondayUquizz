@@ -5,16 +5,16 @@ import LandingPage from "./components/LandingPage";
 import CountdownTimer from "./components/CountdownTimer";
 
 const API_URL = 'https://opentdb.com/api.php?amount=100';
-//const quizLength = 10;
 const total = 15;
 
 const App = ({ quizLength } ) => {
-    console.log('beep');
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState((0));
     const [showAnswers, setShowAnswers] = useState(false);
-    const [timer, setTimer] = useState(0);
+    //const [timer, setTimer] = useState(0);
+    const [clicked, setClicked] = useState(false);
+    const [buttonIndex, setButtonIndex] = useState(null);
 
     useEffect(() => {
         fetch(API_URL)
@@ -42,6 +42,7 @@ const App = ({ quizLength } ) => {
             }
         }
         setShowAnswers(true);
+        setClicked(true);
 
         // check for the answer
         // show another question
@@ -54,6 +55,8 @@ const App = ({ quizLength } ) => {
         setShowAnswers(false);
         setCurrentIndex(currentIndex + 1);
         //startCountdown();
+        setButtonIndex(null);
+        setClicked(false);
     }
 
     const handleRestart = () => {
@@ -103,6 +106,10 @@ const App = ({ quizLength } ) => {
                             currentIndex={currentIndex}
                             showAnswers={showAnswers}
                             setShowAnswers={setShowAnswers}
+                            clicked={clicked}
+                            setClicked={setClicked}
+                            buttonIndex={buttonIndex}
+                            setButtonIndex={setButtonIndex}
               />
 
 

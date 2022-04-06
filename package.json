@@ -19,6 +19,17 @@
     "react-scripts": "5.0.0",
     "react-timer-hook": "^3.0.5",
     "rsuite": "^5.7.1",
+    "tachyons-border-widths": "^3.0.4",
+    "tachyons-borders": "^3.0.4",
+    "tachyons-display": "^5.0.5",
+    "tachyons-font-weight": "^5.0.5",
+    "tachyons-hovers": "^2.5.2",
+    "tachyons-letter-spacing": "^3.0.5",
+    "tachyons-links": "^3.0.11",
+    "tachyons-skins": "^4.1.1",
+    "tachyons-spacing": "^6.0.5",
+    "tachyons-text-transform": "^4.0.6",
+    "tachyons-type-scale": "^6.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

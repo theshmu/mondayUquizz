@@ -1,5 +1,6 @@
-import React, {useState, useEffect, Component} from "react";
+import React, {Component} from "react";
 import CountdownTimer from "./CountdownTimer";
+import AnswerButton from './AnswerButton';
 
 
 export class Questionaire extends Component{
@@ -10,7 +11,7 @@ export class Questionaire extends Component{
             total:10,
             interval:null,
             tempIndex: props.currentIndex,
-            border: 'border-0'
+            border: 'border-0',
         };
     }
 
@@ -25,12 +26,17 @@ export class Questionaire extends Component{
 
         } else {
             this.setState({timer: this.state.timer + 1});
-            console.log(this.state.timer);
         }
     }
+
     componentDidMount() {
         this.setState({timer:0})
         this.startCountdown();
+    }
+
+    setNewQuestion(){
+        this.setState({border: 'border-0',
+                            clicked: false,});
     }
 
     render() {
@@ -47,7 +53,7 @@ export class Questionaire extends Component{
                         dangerouslySetInnerHTML={{__html: this.props.data.question}}/>
                 </div>
                 <div className={'grid grid-cols-2 gap-6 mt-6'}>
-                    {this.props.data.answers.map((answer) => {
+                    {this.props.data.answers.map((answer, index) => {
                         const textColor = this.props.showAnswers
                             ? answer === this.props.data.correct_answer
                                 ? 'text-green-500'
@@ -56,21 +62,38 @@ export class Questionaire extends Component{
                         //const textColor = showAnswers ?
                         //'text-white' : 'text-purple-800';
                         return (
-                            <button
-                                className={
-                                    `bg-white ${textColor} p-4 font-semibold rounded shadow hover:bg-blue-100`}
-                                onClick={() => {
-                                    this.props.handleAnswer(answer);
-                                    clearInterval(this.state.interval);
-                                }}
-                                dangerouslySetInnerHTML={{__html: answer}}
+                            //<button
+                            //    key={index}
+                            //    className={
+                            //        `bg-white ${textColor} p-4 ${this.state.border} font-semibold rounded shadow hover:bg-blue-100`}
+                            //    onClick={() => {
+                            //        this.props.handleAnswer(answer);
+                            //        clearInterval(this.state.interval);
+                            //        //{this.setState({border: 'border-8'})};
+
+                            //    }}
+                            //    dangerouslySetInnerHTML={{__html: answer}}
+                            ///>
+                            <AnswerButton
+                                index={index}
+                                textColor={textColor}
+                                handleAnswer={this.props.handleAnswer}
+                                answer={answer}
+                                interval={this.state.interval}
+                                clicked={this.props.clicked}
+                                setClicked={this.props.setClicked}
+                                showAnswers={this.props.showAnswers}
+                                setNewQuestion={this.setNewQuestion}
+                                border={this.state.border}
+                                buttonIndex={this.props.buttonIndex}
+                                setButtonIndex={this.props.setButtonIndex}
                             />
                         );
                     })}
                 </div>
                 {this.props.showAnswers && (
                     <button
-                        onClick={()=>{this.props.handleNextQuestion(); this.startCountdown(); this.setState({timer:0}); clearInterval(this.state.interval)}}
+                        onClick={()=>{this.props.handleNextQuestion(); this.startCountdown(); this.setState({timer:0}); clearInterval(this.state.interval);}}
                         className={`ml-auto bg-purple-700 text-white p-4 font-semibold rounded shadow mt-6`}>
                         Next Question
                     </button>
