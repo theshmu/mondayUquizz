@@ -6,9 +6,6 @@ import Fireworks from "./components/Fireworks";
 import Correct from './resources/Correct.mp3';
 import Incorrect from './resources/Incorrect.mp3';
 
-
-// const API_URL = 'https://opentdb.com/api.php?amount=100';
-
 const correct = new Audio(Correct);
 const incorrect = new Audio(Incorrect);
 

@@ -8,7 +8,7 @@ export class Questionaire extends Component{
         super(props);
         this.state = {
             timer:0,
-            total:10,
+            total:30,
             interval:null,
             tempIndex: props.currentIndex,
             border: 'border-0',
