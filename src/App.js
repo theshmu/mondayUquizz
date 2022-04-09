@@ -103,7 +103,7 @@ const App = ({ quizLength, API_URL } ) => {
                   >
                       New Game
                   </button>
-                  <div className={'align-baseline pt-80'}>
+                  <div className={'align-baseline pt-40'}>
                       <Fireworks />
                   </div>
 
