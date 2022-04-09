@@ -10,6 +10,11 @@ const correct = new Audio(Correct);
 const incorrect = new Audio(Incorrect);
 const default_API = 'https://opentdb.com/api.php?amount=50';
 
+/*
+App.js uses the api url from LandingPage.js to fetch the questions, then passes to questions and answers to
+Questionaire.js where they displayed to the user. additionally, App.js handles the score and button logic.
+*/
+
 const App = ({ quizLength, API_URL } ) => {
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);

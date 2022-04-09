@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Button} from "react-bootstrap";
-import {keyboard} from "@testing-library/user-event/dist/keyboard";
 
 export class AnswerButton extends Component {
     constructor(props) {

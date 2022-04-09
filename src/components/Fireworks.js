@@ -2,6 +2,11 @@ import React from "react";
 import ReactCanvasConfetti from "react-canvas-confetti";
 import ConfettiButton from "./ConfettiButton";
 
+/*
+Renders fireworks/confetti upon end of quiz
+ */
+
+
 function randomInRange(min, max) {
     return Math.random() * (max - min) + min;
 }

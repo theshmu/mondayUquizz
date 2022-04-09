@@ -4,6 +4,11 @@ import 'rc-slider/assets/index.css';
 import App from "../App";
 import ReactDOM from "react-dom/client";
 
+/*
+Landingpage.js allows selection of quiz parameters (amount of questions, difficulty and category) and then builds the
+api url to be passed to App.js where the questions are fetched.
+*/
+
 class LandingPage extends Component{
     constructor() {
         super();
@@ -44,10 +49,6 @@ class LandingPage extends Component{
         console.log(this.state.category);
     }
 
-    componentDidMount() {
-//        this.changeSelection(this.state.difficulty)
-    }
-
     render() {
         return (
             <div>
@@ -79,7 +80,6 @@ class LandingPage extends Component{
                         className={'rounded shadow-2xl p-2'}
                         id={'diff-dd'}
                         defaultValue={this.state.difficulty}
-                        //value={this.state.difficulty}
                         onChange={(event) => this.changeDifficultySelection(event)}>
                         <option value={''} className={'font-semibold'}>Any Difficulty</option>
                         <option value={'&difficulty=easy'} className={'font-semibold'}>Easy</option>

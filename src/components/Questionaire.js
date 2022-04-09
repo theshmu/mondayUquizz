@@ -2,6 +2,11 @@ import React, {Component} from "react";
 import CountdownTimer from "./CountdownTimer";
 import AnswerButton from './AnswerButton';
 
+/*
+displays the quiz question and answers. Displays a timer (set to 30 seconds) to limit answer selection time. once an
+answer is selected a border will show which answer was chosen and the text will change color to show which answer was
+correct.
+ */
 
 export class Questionaire extends Component{
     constructor(props) {

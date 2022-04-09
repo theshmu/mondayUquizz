@@ -1,5 +1,9 @@
 import React from "react";
 
+/*
+A button that autoclicks the 'start confetti' button upon load so by default confetti is on
+ */
+
 export class ConfettiButton extends React.Component {
     constructor(props) {
         super(props);
