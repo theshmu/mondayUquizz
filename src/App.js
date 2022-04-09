@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Component} from "react";
+import React, {useState, useEffect} from "react";
 import { Questionaire } from './components'
 import ReactDOM from "react-dom/client";
 import LandingPage from "./components/LandingPage";
@@ -8,13 +8,13 @@ import Incorrect from './resources/Incorrect.mp3';
 
 const correct = new Audio(Correct);
 const incorrect = new Audio(Incorrect);
+const default_API = 'https://opentdb.com/api.php?amount=50';
 
 const App = ({ quizLength, API_URL } ) => {
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState((0));
     const [showAnswers, setShowAnswers] = useState(false);
-    //const [timer, setTimer] = useState(0);
     const [clicked, setClicked] = useState(false);
     const [buttonIndex, setButtonIndex] = useState(null);
 
@@ -22,6 +22,7 @@ const App = ({ quizLength, API_URL } ) => {
         fetch(API_URL)
             .then(res => res.json())
             .then((data) => {
+                if(data.response_code === 0){
                 setQuestions(data.results);
                 const questions = data.results.map((question) =>
                     ({
@@ -30,7 +31,18 @@ const App = ({ quizLength, API_URL } ) => {
                     }))
 
                 setQuestions(questions);
-            });
+            } else {
+                 fetch(default_API).then(res => res.json()).then((data) => {
+                     setQuestions(data.results);
+                     const questions = data.results.map((question) =>
+                         ({
+                             ...question, answers: [question.correct_answer, ...question.incorrect_answers]
+                                 .sort(() => Math.random() - 0.5)
+                         }))
+
+                     setQuestions(questions);
+                 })
+                }});
 
     }, []);
 
@@ -72,19 +84,6 @@ const App = ({ quizLength, API_URL } ) => {
                 )
         );
     }
-   // let interval;
-   // const startCountdown = () => {
-     //       interval=setInterval(countdown, 1000);
-     //   }
-    //const countdown = () => {
-      //  if (timer === total) {
-        //    setShowAnswers(true);
-          //  clearInterval(interval);
-        //} else {
-          //  setTimer(timer + 1);
-        //}
-   // }
-
 
   return questions.length > 0 ? (
       <div className='container'>

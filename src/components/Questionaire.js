@@ -59,21 +59,7 @@ export class Questionaire extends Component{
                                 ? 'text-green-500'
                                 : 'text-red-500'
                             : 'text-purple-700';
-                        //const textColor = showAnswers ?
-                        //'text-white' : 'text-purple-800';
                         return (
-                            //<button
-                            //    key={index}
-                            //    className={
-                            //        `bg-white ${textColor} p-4 ${this.state.border} font-semibold rounded shadow hover:bg-blue-100`}
-                            //    onClick={() => {
-                            //        this.props.handleAnswer(answer);
-                            //        clearInterval(this.state.interval);
-                            //        //{this.setState({border: 'border-8'})};
-
-                            //    }}
-                            //    dangerouslySetInnerHTML={{__html: answer}}
-                            ///>
                             <AnswerButton
                                 index={index}
                                 textColor={textColor}
