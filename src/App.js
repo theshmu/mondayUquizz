@@ -7,12 +7,12 @@ import Correct from './resources/Correct.mp3';
 import Incorrect from './resources/Incorrect.mp3';
 
 
-const API_URL = 'https://opentdb.com/api.php?amount=100';
+// const API_URL = 'https://opentdb.com/api.php?amount=100';
 
 const correct = new Audio(Correct);
 const incorrect = new Audio(Incorrect);
 
-const App = ({ quizLength } ) => {
+const App = ({ quizLength, API_URL } ) => {
     const [questions, setQuestions] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState((0));
@@ -102,7 +102,7 @@ const App = ({ quizLength } ) => {
                   >
                       New Game
                   </button>
-                  <div className={'align-baseline pt-96'}>
+                  <div className={'align-baseline pt-80'}>
                       <Fireworks />
                   </div>
 

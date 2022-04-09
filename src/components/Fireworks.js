@@ -74,10 +74,10 @@ export default class Fireworks extends React.Component {
     render() {
         return (
             <>
-                <div className={'flex my-lg-4 grid grid-cols-3'}>
+                <div className={'flex my-lg-4 mx-2 grid grid-cols-3'}>
                     <ConfettiButton startAnimation={this.startAnimation} />
-                    <button className={'mx-auto bg-white p-4 border-0 font-semibold rounded hover:bg-blue-100'} onClick={this.pauseAnimation}>Pause Confetti</button>
-                    <button className={'mx-auto bg-white p-4 border-0 font-semibold rounded hover:bg-blue-100'} onClick={this.stopAnimation}>Stop Confetti</button>
+                    <button className={'mx-auto bg-white text-xs p-1 py-1 border-0 font-semibold rounded hover:bg-blue-100'} onClick={this.pauseAnimation}>Pause Confetti</button>
+                    <button className={'mx-auto bg-white text-xs p-1 py-1 border-0 font-semibold rounded hover:bg-blue-100'} onClick={this.stopAnimation}>Stop Confetti</button>
                 </div>
                 <ReactCanvasConfetti
                     refConfetti={this.getInstance}
