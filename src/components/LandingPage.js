@@ -16,37 +16,46 @@ class LandingPage extends Component{
             quizLength: 10,
             difficulty: '',
             category: '',
-            API_URL: 'https://opentdb.com/api.php?amount=50',
+            API_URL: 'https://opentdb.com/api.php?amount=',
         }
     }
 
-    handleNewGame = (length, level) => {
-        console.log(this.state.API_URL);
+    componentDidMount() {
+        this.setState({API_URL: this.state.API_URL + '10'})
+    }
+
+    handleNewGame = (length, level, api_URL) => {
         return (
             ReactDOM.createRoot(
                 document.getElementById('root'))
-                .render(<App quizLength={length} difficulty={level} API_URL={this.state.API_URL}/>
+                .render(<App quizLength={length} difficulty={level} API_URL={api_URL}/>
                 )
         )
     }
+    changeQuizLength = (event) => {
+        const length = event;
+        this.setState({quizLength: length}, () => {
+           this.setState({API_URL: 'https://opentdb.com/api.php?amount=' + this.state.quizLength
+                   + this.state.category + this.state.difficulty});
+        });
+    };
+
 
     changeDifficultySelection = (event) => {
         const new_diff = event.target.value;
-        console.log(new_diff);
         this.setState(
             {difficulty: new_diff},() => {
-                this.setState({API_URL: 'https://opentdb.com/api.php?amount=50' + this.state.category + this.state.difficulty});
+                this.setState({API_URL: 'https://opentdb.com/api.php?amount=' + this.state.quizLength
+                        + this.state.category + this.state.difficulty});
             });
-        console.log(this.state.difficulty);
     }
     changeCategorySelection = (event) => {
         const new_cat = event.target.value;
-        console.log(new_cat);
         this.setState(
             {category: new_cat},() => {
-                this.setState({API_URL: 'https://opentdb.com/api.php?amount=50' + this.state.category + this.state.difficulty});
+                this.setState({API_URL: 'https://opentdb.com/api.php?amount=' + this.state.quizLength
+                        + this.state.category + this.state.difficulty});
             });
-        console.log(this.state.category);
     }
 
     render() {
@@ -65,8 +74,8 @@ class LandingPage extends Component{
                             value={this.state.quizLength}
                             startPoint={10}
                             onChange={
-                                value => {
-                                    this.setState({quizLength: value});
+                                (event) => {
+                                    this.changeQuizLength(event);
                                 }
                             }
                     />
