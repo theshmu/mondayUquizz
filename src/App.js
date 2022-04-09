@@ -23,6 +23,11 @@ const App = ({ quizLength, API_URL } ) => {
     const [clicked, setClicked] = useState(false);
     const [buttonIndex, setButtonIndex] = useState(null);
 
+
+    /*
+    if the API does not have enough questions in a certain category an empty array is returned, so I chose
+    to load a default api in these cases so the game always loads questions.
+     */
     useEffect(() => {
         fetch(API_URL)
             .then(res => res.json())
