@@ -97,7 +97,7 @@ class LandingPage extends Component{
                     </select>
                 </div>
                 <div className={'my-4'}>
-                    <label htmlFor={'category'} className={'text-white font-semibold mx-4'}>PLease select a
+                    <label htmlFor={'category'} className={'text-white font-semibold mx-4'}>Please select a
                         category:</label>
                     <select
                         name={'category'}
